@@ -1,0 +1,39 @@
+﻿
+@using Kendo.Mvc.UI;
+
+@(Html.Kendo().Grid<DataMatrixPrinter.ViewModels.Business.Product.Update.ProductUpdateVm>()
+                                .Name("GridKendoProductGrid")
+                                .DataSource(
+                                datasource => datasource
+                                    .Ajax()
+                                    .PageSize(20)
+                                    .Read(read => read.Url("/api/PrintProductsapi/GetProducts").Data("AdvSearch")))
+                                    .Columns(columns =>
+                                    {
+                                        columns.Bound(c => c.mainProductID).Title("کد محصول").Visible(false);
+                                        columns.Bound(c => c.Gs1ItemCode).Title("کد Gs1").Visible(false);
+                                        columns.Bound(c => c.Gtin).Title("کد GTIN");
+                                        columns.Bound(c => c.PackingType).Title("سطح بسته بندی");
+                                        columns.Bound(c => c.CompanyCode).Visible(false);
+                                        columns.Bound(c => c.CountryCode).Visible(false);
+                                        columns.Bound(c => c.Uom).Title("UOM");
+                                        columns.Bound(c => c.WeightPerPack).Title("وزن هر بسته");
+                                        columns.Bound(c => c.QtyPerPack).Title("تعداد در هر بسته");
+                                        columns.Bound(c => c.Templet).Title("برچسب");
+                                        columns.Bound(c => c.Description).Title("توضیحات");
+                                        columns.Bound(c => c.CompanyName).Title("نام شرکت").Visible(false);
+                                        columns.Bound(c => c.CountryName).Title("کشور").Visible(false);
+
+                                    })
+                                    .ToolBar(tools => tools.Excel().Text("دانلود فایل اکسل"))
+                                 .Excel(excel =>
+                                        excel.FileName("Products.xlsx")
+                                        .ProxyURL(Url.Action("Excel_Export_Save", "PrintProduct"))
+                                        )
+                                 .Pageable()
+                                 .Sortable()
+                                 .Selectable()
+                                 .Events(events => events.Change("PrintProduct"))
+
+
+)

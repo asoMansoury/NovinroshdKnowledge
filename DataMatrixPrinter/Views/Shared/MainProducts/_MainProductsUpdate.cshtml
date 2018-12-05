@@ -1,0 +1,136 @@
+﻿
+
+@using Kendo.Mvc.UI;
+
+<div class="col-md-12">
+    <!-- Horizontal Form -->
+    <div class="box box-info">
+        <div class="box-header with-border">
+            <h3 class="box-title">ویرایش اطلاعات</h3>
+        </div>
+
+        <div class="box-header">
+
+            <form class="form-horizontal">
+                <div class="box-body">
+                    <div class="form-group">
+                        <label for="drpUPProduct" class="col-sm-1 control-label">  شرکت</label>
+                        <div class="col-sm-3">
+                            @(Html.Kendo().DropDownList()
+                                          .Name("drpSrCompany")
+                                          .OptionLabel("انتخاب شرکت")
+                                          .DataTextField("CompanyName")
+                                          .DataValueField("Id")
+                                          .Filter("contains")
+                                          .DataSource(source =>
+                                          {
+                                              source.Read(read =>
+                                              {
+                                                  read.Url("/api/companyApi/Companies");
+
+                                              });
+                                          })
+
+                            )
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="txtSRProductName" class="col-sm-1 control-label"> نام محصول</label>
+                        <div class="col-sm-4">
+                            @Html.TextBox("txtSRProductName", null, new { @class = "form-control", id = "txtSRProductName", placeholder = "نام محصول" })
+                        </div>
+
+                        <label for="txtSRProductName" class="col-sm-1 control-label">LOT کد</label>
+                        <div class="col-sm-4">
+                            @Html.TextBox("txtSRLOT", null, new { @class = "form-control", id = "txtSRLOT", placeholder = "LOT" })
+                        </div>
+                    </div>
+                    @Html.TextBox("txtID", null, new { @class = "form-control hidden", id = "txtID", placeholder = "LOT" })
+                    
+                </div>
+            </form>
+
+            <div class="box-footer">
+                <button type="submit" class="btn btn-info pull-right" id="btnSearch">جستجو</button>
+            </div>
+
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-1 control-label"> نتیجه جستجو</label>
+                <div class="col-sm-10 k-rtl">
+                    @Html.Partial("~/Views/Shared/MainProducts/_MainProductKendoGrid.cshtml")
+
+
+                </div>
+            </div>
+        </div>
+        <hr />
+        <!-- /.box-header -->
+        <!-- form start -->
+        <!-- Trigger the modal with a button -->
+
+
+
+
+
+        <div class="box-header">
+            <div class="box-header with-border">
+                <h3 class="box-title">ویرایش محصول انتخابی</h3>
+            </div>
+
+            <form class="form-horizontal"  name="UpdateProductMain">
+                <div class="box-body well">
+                    <div class="form-group">
+                        <label for="drpUPProduct" class="col-sm-1 control-label">  شرکت</label>
+                        <div class="col-sm-3">
+                            @(Html.Kendo().DropDownList()
+                                          .Name("drpUPCompany")
+                                          .OptionLabel("انتخاب شرکت")
+                                          .DataTextField("CompanyName")
+                                          .DataValueField("Id")
+                                          .Filter("contains")
+                                          .DataSource(source =>
+                                          {
+                                              source.Read(read =>
+                                              {
+                                                  read.Url("/api/companyApi/Companies");
+
+                                              });
+                                          })
+
+                            )
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="txtSRProductName" class="col-sm-1 control-label"> نام محصول</label>
+                        <div class="col-sm-4">
+                            @Html.TextBox("txtUPProductName", null, new { @class = "form-control", id = "txtUPProductName", placeholder = "نام محصول" })
+                        </div>
+
+                        <label for="txtSRProductName" class="col-sm-1 control-label">LOT کد</label>
+                        <div class="col-sm-4">
+                            @Html.TextBox("txtUPLOT", null, new { @class = "form-control", id = "txtUPLOT", placeholder = "LOT" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inputEmail3" class="col-sm-1 control-label">فعال</label>
+                        <div class="col-sm-1">
+                            <input type="checkbox" name="IsEnableEntity" id="IsEnableEntity" />
+                        </div>
+                    </div>
+                </div>
+                <!-- /.box-body -->
+                <div class="box-footer">
+
+                    <button type="submit" class="btn btn-info pull-right" id="btnRegisterUpdate" >ویرایش</button>
+                </div>
+                <!-- /.box-footer -->
+            </form>
+        </div>
+
+    </div>
+</div>
+
+

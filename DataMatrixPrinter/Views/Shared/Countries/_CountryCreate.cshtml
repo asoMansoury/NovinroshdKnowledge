@@ -1,0 +1,42 @@
+﻿
+<div class="col-md-12">
+    <!-- Horizontal Form -->
+    <div class="box box-info">
+        <div class="box-header with-border">
+            <h3 class="box-title">وارد کردن اطلاعات</h3>
+        </div>
+        <!-- /.box-header -->
+        <!-- form start -->
+        <form class="form-horizontal" name="createCountryForm">
+            <div class="box-body">
+                <div class="form-group">
+                    <label for="CountryName" class="col-sm-1 control-label" style="direction:rtl;"> نام کشور</label>
+                    <div class="col-sm-4">
+                        @Html.TextBox("txtCrCountrName", null, new { @class = "form-control", id = "CountryName", placeholder = "نام" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="GS1Code" class="col-sm-1 control-label" style="direction:rtl;">کد Gs1</label>
+                    <div class="col-sm-4">
+                        @Html.TextBox("txtCrCountryGS1", null, new { @class = "form-control", id = "GS1Code", placeholder = "GS1" })
+                    </div>
+
+                    <label for="NationalCode" class="col-sm-1 control-label">کد بین الملل</label>
+                    <div class="col-sm-4">
+                        @Html.TextBox("txtCrCompanyName", null, new { @class = "form-control", id = "NationalCode", placeholder = "کد بین الملل" })
+                    </div>
+                </div>
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer">
+                <button type="reset" class="btn btn-default" id="btnClearCreate">پاک کردن</button>
+                <button type="button" class="btn btn-info pull-right" id="btnRegisterCreate">ثبت</button>
+            </div>
+            <!-- /.box-footer -->
+        </form>
+    </div>
+</div>
+
+
+

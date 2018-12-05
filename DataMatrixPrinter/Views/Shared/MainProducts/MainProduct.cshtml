@@ -1,0 +1,59 @@
+﻿
+
+
+<div class="col-md-12">
+    <!-- Horizontal Form -->
+    <div class="box box-info">
+        <div class="box-header with-border">
+            <h3 class="box-title">وارد کردن اطلاعات</h3>
+        </div>
+        <!-- /.box-header -->
+        <!-- form start -->
+        <form class="form-horizontal" name="mainProductForm">
+            <div class="box-body">
+                <div class="form-group">
+                    <label for="drpUPProduct" class="col-sm-1 control-label">  شرکت</label>
+                    <div class="col-sm-3">
+                        @(Html.Kendo().DropDownList()
+                                          .Name("drpCRCompany")
+                                          .OptionLabel("انتخاب شرکت")
+                                          .DataTextField("CompanyName")
+                                          .DataValueField("Id")
+                                          .Filter("contains")
+                                          .DataSource(source =>
+                                          {
+                                              source.Read(read =>
+                                              {
+                                                  read.Url("/api/companyApi/Companies");
+
+                                              });
+                                          })
+
+                        )
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="txtCRProductName" class="col-sm-1 control-label"> نام محصول</label>
+                    <div class="col-sm-4">
+                        @Html.TextBox("txtCRProductName", null, new { @class = "form-control", id = "txtCRProductName", placeholder = "نام محصول" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="txtCRLOT" class="col-sm-1 control-label"> LOT</label>
+                    <div class="col-sm-4">
+                        @Html.TextBox("txtCRLOT", null, new { @class = "form-control", id = "txtCRLOT", placeholder = "LOT" })
+                    </div>
+                </div>
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer">
+                <button type="reset" class="btn btn-default" id="btnClearCreate">پاک کردن</button>
+                <button type="submit" class="btn btn-info pull-right" id="btnRegisterCreate">ثبت</button>
+            </div>
+            <!-- /.box-footer -->
+        </form>
+    </div>
+</div>
+
+

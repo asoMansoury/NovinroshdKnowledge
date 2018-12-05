@@ -1,0 +1,332 @@
+﻿
+@using Kendo.Mvc.UI;
+
+<div class="col-md-12">
+    <!-- Horizontal Form -->
+    <div class="box box-info">
+        <div class="box-header with-border">
+            <h3 class="box-title">ویرایش اطلاعات</h3>
+        </div>
+
+        <div class="box-header">
+
+            <form class="form-horizontal" >
+                <div class="box-body">
+                    <div class="form-group">
+                        <label for="inputEmail3" class="col-sm-1 control-label"> کد کشور</label>
+                        <div class="col-sm-3">
+                            @(Html.Kendo().DropDownList()
+                                          .Name("drpSRCountry")
+                                          .OptionLabel("انتخاب کشور")
+                                          .DataTextField("CountryName")
+                                          .DataValueField("Id")
+                                          .Filter("contains")
+                                          .DataSource(source =>
+                                          {
+                                              source.Read(read =>
+                                            {
+                                                read.Url("/api/countryapi/countries?getAll=false");
+
+                                            });
+                                          })
+                            )
+                        </div>
+
+                        <label for="drpSRCompany" class="col-sm-1 control-label">  شرکت</label>
+                        <div class="col-sm-3">
+                            @(Html.Kendo().DropDownList()
+                                          .Name("drpSRCompany")
+                                          .OptionLabel("انتخاب شرکت")
+                                          .DataTextField("CompanyName")
+                                          .DataValueField("Id")
+                                          .Filter("contains")
+                                          .DataSource(source =>
+                                          {
+                                              source.Read(read =>
+                                              {
+                                                  read.Url("/api/companyapi/Companies");
+
+                                              });
+                                          })
+                            )
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="ttSRProductCode" class="col-sm-1 control-label"> کد محصول</label>
+                        <div class="col-sm-3">
+                            @Html.TextBox("txtSRProductCode", null, new { @class = "form-control", id = "txtSRProductCode", placeholder = "پیشوند" })
+                        </div>
+
+                        <label for="txtSRTypePackage" class="col-sm-1 control-label">نوع بسته</label>
+                        <div class="col-sm-3">
+                            @(Html.Kendo().DropDownList()
+                                          .Name("txtSRTypePackage")
+                                          .OptionLabel("انتخاب سطح بسته بندی")
+                                          .DataTextField("Name")
+                                          .DataValueField("Id")
+                                          .Filter("contains")
+                                          .DataSource(source =>
+                                          {
+                                              source.Read(read =>
+                                              {
+                                                  read.Url("/api/packageapi/Pacakges?getAll=true");
+
+                                              });
+                                          })
+                                          .Enable(true)
+                            )
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="txtSRGTIN" class="col-sm-1 control-label">کد GTIN</label>
+                        <div class="col-sm-3">
+                            @Html.TextBox("txtSRGTIN", null, new { @class = "form-control", id = "txtSRGTIN", placeholder = "پیشوند" })
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+            <div class="box-footer">
+                <button type="submit" class="btn btn-info pull-right" id="btnSearch">جستجو</button>
+            </div>
+
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-1 control-label"> نتیجه جستجو</label>
+                <div class="col-sm-10 k-rtl">
+                    @Html.Partial("~/Views/Shared/Product/_ProductKendoGrid.cshtml")
+
+                </div>
+            </div>
+        </div>
+        <hr />
+        <!-- /.box-header -->
+        <!-- form start -->
+        <!-- Trigger the modal with a button -->
+
+
+
+
+
+        <div class="box-header">
+            <div class="box-header with-border">
+                <h3 class="box-title">ویرایش محصول انتخابی</h3>
+            </div>
+
+            <form class="form-horizontal" name="productUpdate">
+                <div class="box-body well">
+
+                    <div class="form-group">
+                        <label for="drpUPProduct" class="col-sm-2 control-label">  شرکت</label>
+                        <div class="col-sm-3">
+                            @(Html.Kendo().DropDownList()
+                                          .Name("drpUPCompany")
+                                          .OptionLabel("انتخاب شرکت")
+                                          .DataTextField("CompanyName")
+                                          .DataValueField("Id")
+                                          .Filter("contains")
+                                          .DataSource(source =>
+                                          {
+                                              source.Read(read =>
+                                              {
+                                                  read.Url("/api/companyApi/Companies");
+
+                                              });
+                                          }).Events(events => events.Change("drpUPCompanyChange"))
+
+                            )
+
+                        </div>
+
+                        <label for="inputEmail3" class="col-sm-2 control-label" style="direction:rtl;">کد Gs1 شرکت</label>
+                        <div class="col-sm-4">
+                            @Html.TextBox("txtUPGs1Company", null, new { id = "txtUPGs1Company", disabled = "true" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inputEmail3" class="col-sm-2 control-label"> کشور</label>
+                        <div class="col-sm-3">
+                            @(Html.Kendo().DropDownList()
+                                          .Name("drpUPCountry")
+                                          .OptionLabel("انتخاب کشور")
+                                          .DataTextField("CountryName")
+                                          .DataValueField("Id")
+                                          .Filter("contains")
+                                          .DataSource(source =>
+                                          {
+                                              source.Read(read =>
+                                              {
+                                                  read.Url("/api/countryapi/countries?getAll=false");
+
+                                              });
+                                          })
+                                          .Events(events => events.Change("drpUPCountryChange"))
+                                          .Enable(true)
+                            )
+
+                        </div>
+
+                        <label for="txtUPCountryGS1" class="col-sm-2 control-label" style="direction:rtl;">کد Gs1 کشور</label>
+                        <div class="col-sm-3">
+                            @Html.TextBox("txtUPCountryGS1", null, new { id = "txtUPCountryGS1", disabled = "true" })
+                        </div>
+                    </div>
+
+                    
+
+                    <div class="form-group">
+                        <label for="inputEmail3" class="col-sm-2 control-label"> محصول اصلی</label>
+                        <div class="col-sm-3">
+                            @(Html.Kendo().DropDownList()
+                                          .Name("drpUPProducts")
+                                          .OptionLabel("انتخاب محصول")
+                                          .DataTextField("ProductName")
+                                          .DataValueField("ID")
+                                          .Filter("contains")
+                                          .DataSource(source =>
+                                          {
+                                              source.Read(read =>
+                                              {
+                                                  read.Url("/api/ProductMainApi/GetAll?getAll=false");
+
+                                              });
+                                          })
+                                          .Events(events => events.Change("drpUPProductChange"))
+
+                            )
+
+                        </div>
+
+                        <label for="txtUPLOTProduct" class="col-sm-2 control-label">  LOT کد</label>
+                        <div class="col-sm-4">
+                            @Html.TextBox("txtUPLOTProduct", null, new { id = "txtUPLOTProduct", disabled = "true" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="txtUpProductCode" class="col-sm-2 control-label">کد محصول</label>
+                        <div class="col-sm-3">
+                            @Html.TextBox("txtUpProductCode", null, new { @class = "form-control", id = "txtUpProductCode", placeholder = "کد محصول" })
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="btnGenerateGTIN" class="col-sm-2 control-label">Generate GTN</label>
+                        <div class="col-sm-3">
+                            <button type="button" id="btnUPGenerateGTIN">Generate</button>
+                        </div>
+                        <label for="txtUPGTIN" class="col-sm-2 control-label"> کد GTIN</label>
+                        <div class="col-sm-3">
+                            @Html.TextBox("txtUPGTIN", null, new { @class = "form-control", id = "txtUPGTIN", placeholder = "GTIN" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="txtCRProductType" class="col-sm-2 control-label">نوع بسته</label>
+                        <div class="col-sm-3">
+                            @(Html.Kendo().DropDownList()
+                                          .Name("drpUPPackage")
+                                          .OptionLabel("انتخاب سطح بسته بندی")
+                                          .DataTextField("Name")
+                                          .DataValueField("Id")
+                                          .Filter("contains")
+                                          .DataSource(source =>
+                                          {
+                                              source.Read(read =>
+                                              {
+                                                  read.Url("/api/packageapi/Pacakges?getAll=false");
+
+                                              });
+                                          })
+                                          .Enable(true)
+                            )
+                        </div>
+                    </div>
+
+                    <input type="text" id="txtID" class="hidden"/>
+
+                    <div class="form-group">
+                        <label for="txtCRWeight" class="col-sm-2 control-label"> وزن بسته</label>
+                        <div class="col-sm-3">
+                            @Html.TextBox("txtUPWeight", null, new { @class = "form-control", id = "txtUPWeight", placeholder = "وزن" })
+                        </div>
+
+                        <label for="txtUPUOM" class="col-sm-2 control-label"> UOM</label>
+                        <div class="col-sm-3">
+                            @Html.TextBox("txtUPUOM", null, new { @class = "form-control", id = "txtUPUOM", placeholder = "UOM" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="txtUPQTY" class="col-sm-2 control-label"> تعداد به ازای هر بسته</label>
+                        <div class="col-sm-3">
+                            @Html.TextBox("txtUPQTY", null, new { @class = "form-control", id = "txtUPQTY", placeholder = "تعداد" })
+                        </div>
+
+                        <label for="txtCRLbl" class="col-sm-2 control-label"> برچسب</label>
+                        <div class="col-sm-3">
+                            @Html.TextBox("txtUPLbl", null, new { @class = "form-control", id = "txtUPLbl", placeholder = "برچسب" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="txtCRDesc" class="col-sm-2 control-label"> تاریخ انقضا محصول</label>
+                        <div class="col-sm-3">
+                            @(Html.Kendo().DatePicker().Name("drpUPExpireDate"))
+                            @*@(Html.Kendo().DropDownList()
+                                          .Name("drpUPExpireDate")
+                                          .OptionLabel("انتخاب روز")
+                                          .DataTextField("DayOfExpire")
+                                          .DataValueField("DayOfExpire")
+                                          .Filter("contains")
+                                          .DataSource(source =>
+                                          {
+                                              source.Read(read =>
+                                              {
+                                                  read.Url("/api/productapi/GetExpireDates");
+
+                                              });
+                                          })
+                                          .Enable(true)
+                            )*@
+                            @*<input id="drpUPExpireDate" type="text" />*@
+                        </div>
+
+                        <label for="txtUPPricePoduct" class="col-sm-2 control-label"> قیمت</label>
+                        <div class="col-sm-3">
+                            @Html.TextBox("txtUPPricePoduct", null, new { @class = "form-control", id = "txtUPPricePoduct", placeholder = "قیمت محصول" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inputEmail3" class="col-sm-1 control-label">فعال</label>
+                        <div class="col-sm-1">
+                            <input type="checkbox" name="IsEnableEntity" id="IsEnableEntity" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="txtCRDesc" class="col-sm-2 control-label"> نوضیحات</label>
+                        <div class="col-sm-10">
+                            @Html.TextBox("txtUPDesc", null, new { @class = "form-control", id = "txtUPDesc", placeholder = "توضیحات" })
+                        </div>
+                    </div>
+                </div>
+                <!-- /.box-body -->
+                <div class="box-footer">
+
+                    <button type="submit" class="btn btn-info pull-right" id="btnRegisterUpdate">ویرایش</button>
+                </div>
+                <!-- /.box-footer -->
+            </form>
+        </div>
+
+    </div>
+</div>
+
+

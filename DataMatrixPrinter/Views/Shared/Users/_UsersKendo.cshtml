@@ -1,0 +1,34 @@
+﻿
+
+
+@using Kendo.Mvc.UI;
+
+
+
+@(Html.Kendo().Grid<DataMatrixPrinter.ViewModels.Business.UserVM.UserVM>()
+                                .Name("GridKendoUsersGrid")
+                                .DataSource(
+                                datasource => datasource
+                                    .Ajax()
+                                    .PageSize(20)
+                                    .Read(read => read.Url("/api/userapi/GetUsers").Data("AdvSearch")))
+                                    .Columns(columns =>
+                                    {
+                                        columns.Bound(c => c.name).Title("نام کاربر");
+                                        columns.Bound(c => c.family).Title("نام خانوادگی کاربر");
+                                        columns.Bound(c => c.nationalCode).Title("کد ملی کاربر");
+                                        columns.Bound(c => c.Id).Title("UserID").Visible(false);
+                                        columns.Bound(c => c.email).Title("ایمیل کاربر");
+                                    })
+                                 .ToolBar(tools => tools.Excel().Text("دانلود فایل اکسل"))
+                                 .Excel(excel =>
+                                        excel.FileName("Products.xlsx")
+                                        .ProxyURL(Url.Action("Excel_Export_Save", "PrintProduct"))
+                                        )
+                                 .Pageable()
+                                 .Sortable()
+                                 .Selectable()
+                                 .Events(events => events.Change("UpdateRecordKendo"))
+
+
+)

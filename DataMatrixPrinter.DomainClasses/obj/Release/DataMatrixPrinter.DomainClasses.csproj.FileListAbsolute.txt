@@ -1,0 +1,16 @@
+D:\aso\Projects\GTINProject\DataMatrixPrinter\DataMatrixPrinter\DataMatrixPrinter.DomainClasses\bin\Release\DataMatrixPrinter.DomainClasses.dll.config
+D:\aso\Projects\GTINProject\DataMatrixPrinter\DataMatrixPrinter\DataMatrixPrinter.DomainClasses\bin\Release\DataMatrixPrinter.DomainClasses.dll
+D:\aso\Projects\GTINProject\DataMatrixPrinter\DataMatrixPrinter\DataMatrixPrinter.DomainClasses\bin\Release\DataMatrixPrinter.DomainClasses.pdb
+D:\aso\Projects\GTINProject\DataMatrixPrinter\DataMatrixPrinter\DataMatrixPrinter.DomainClasses\bin\Release\AutoMapper.dll
+D:\aso\Projects\GTINProject\DataMatrixPrinter\DataMatrixPrinter\DataMatrixPrinter.DomainClasses\bin\Release\EntityFramework.dll
+D:\aso\Projects\GTINProject\DataMatrixPrinter\DataMatrixPrinter\DataMatrixPrinter.DomainClasses\bin\Release\EntityFramework.SqlServer.dll
+D:\aso\Projects\GTINProject\DataMatrixPrinter\DataMatrixPrinter\DataMatrixPrinter.DomainClasses\bin\Release\Microsoft.AspNet.Identity.Core.dll
+D:\aso\Projects\GTINProject\DataMatrixPrinter\DataMatrixPrinter\DataMatrixPrinter.DomainClasses\bin\Release\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\aso\Projects\GTINProject\DataMatrixPrinter\DataMatrixPrinter\DataMatrixPrinter.DomainClasses\bin\Release\AutoMapper.xml
+D:\aso\Projects\GTINProject\DataMatrixPrinter\DataMatrixPrinter\DataMatrixPrinter.DomainClasses\bin\Release\EntityFramework.xml
+D:\aso\Projects\GTINProject\DataMatrixPrinter\DataMatrixPrinter\DataMatrixPrinter.DomainClasses\bin\Release\EntityFramework.SqlServer.xml
+D:\aso\Projects\GTINProject\DataMatrixPrinter\DataMatrixPrinter\DataMatrixPrinter.DomainClasses\bin\Release\Microsoft.AspNet.Identity.Core.xml
+D:\aso\Projects\GTINProject\DataMatrixPrinter\DataMatrixPrinter\DataMatrixPrinter.DomainClasses\bin\Release\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\aso\Projects\GTINProject\DataMatrixPrinter\DataMatrixPrinter\DataMatrixPrinter.DomainClasses\obj\Release\DataMatrixPrinter.DomainClasses.csprojResolveAssemblyReference.cache
+D:\aso\Projects\GTINProject\DataMatrixPrinter\DataMatrixPrinter\DataMatrixPrinter.DomainClasses\obj\Release\DataMatrixPrinter.DomainClasses.dll
+D:\aso\Projects\GTINProject\DataMatrixPrinter\DataMatrixPrinter\DataMatrixPrinter.DomainClasses\obj\Release\DataMatrixPrinter.DomainClasses.pdb

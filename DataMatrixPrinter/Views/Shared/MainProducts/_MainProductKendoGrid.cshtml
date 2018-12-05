@@ -1,0 +1,30 @@
+﻿
+@using Kendo.Mvc.UI;
+
+@(Html.Kendo().Grid<DataMatrixPrinter.ViewModels.Business.ProductMainVM.Add.ProductMainModel>()
+                                .Name("GridKendoMainProductGrid")
+                                .DataSource(
+                                datasource => datasource
+                                    .Ajax()
+                                    .PageSize(20)
+                                    .Read(read => read.Url("/api/ProductMainApi/Products").Data("AdvSearch")))
+                                    .Columns(columns =>
+                                    {
+                                        columns.Bound(c => c.ID).Title("کد محصول");
+                                        columns.Bound(c => c.ProductName).Title("نام محصول");
+                                        columns.Bound(c => c.LOT).Title("کد LOT");
+                                        columns.Bound(c => c.Serial).Visible(false).Title("شماره سریال");
+                                        columns.Bound(c => c.CompanyID).Visible(false);
+                                    })
+                                 .ToolBar(tools => tools.Excel().Text("دانلود فایل اکسل"))
+                                 .Excel(excel =>
+                                        excel.FileName("Products.xlsx")
+                                        .ProxyURL(Url.Action("Excel_Export_Save", "PrintProduct"))
+                                        )
+                                 .Pageable()
+                                 .Sortable()
+                                 .Selectable()
+                                 .Events(r=>r.Change("UpdateRecordKendo"))
+
+
+)

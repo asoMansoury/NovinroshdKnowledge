@@ -1,0 +1,327 @@
+﻿@model DataMatrixPrinter.ViewModels.Business.UserVM.UserRegistryVM
+
+@{
+    ViewBag.Title = "UsersManager";
+}
+
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <!-- Main content -->
+    <section class="content">
+        <!-- Small boxes (Stat box) -->
+        <div class="row">
+            <div class="col-lg-3 col-xs-5">
+                <!-- small box -->
+                <div class="small-box bg-aqua">
+                    <div class="inner">
+                        <h3>کاربر</h3>
+                        <p>مشاهده اطلاعات کاربر</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-bag"></i>
+                    </div>
+                    <a href="@Url.Content("/User/UserProfile")" class="small-box-footer"><i class="fa fa-arrow-circle-left"></i> اطلاعات بیشتر </a>
+                </div>
+            </div>
+            <!-- ./col -->
+            <div class="col-lg-2 col-xs-5">
+                <!-- small box -->
+                <div class="small-box bg-green">
+                    <div class="inner">
+                        <h3>شرکت<sup style="font-size: 20px"></sup></h3>
+                        <p>مدیریت شرکت</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-stats-bars"></i>
+                    </div>
+                    <a href="@Url.Content("/Company/CompanyManager")" class="small-box-footer"><i class="fa fa-arrow-circle-left"></i> اطلاعات بیشتر </a>
+                </div>
+            </div>
+
+            <div class="col-lg-2 col-xs-4">
+                <!-- small box -->
+                <img src="\Images\Logos\Tranet_Logo.gif" width="120" height="120" style="margin-bottom:10px; margin-right:45px;" />
+            </div>
+            <!-- ./col -->
+            <div class="col-lg-2 col-xs-5">
+                <!-- small box -->
+                <div class="small-box bg-yellow">
+                    <div class="inner">
+                        <h3>محصولات</h3>
+                        <p>مدیریت محصولات</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-person-add"></i>
+                    </div>
+                    <a href="@Url.Content("/Product/ProductManager")" class="small-box-footer"><i class="fa fa-arrow-circle-left"></i> اطلاعات بیشتر </a>
+                </div>
+            </div>
+            <!-- ./col -->
+            <div class="col-lg-3 col-xs-5">
+                <!-- small box -->
+                <div class="small-box bg-red">
+                    <div class="inner">
+                        <h3>کاربر</h3>
+                        <p>مدیریت کاربران</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-pie-graph"></i>
+                    </div>
+                    <a href="@Url.Content("/User/UsersManager")" class="small-box-footer"><i class="fa fa-arrow-circle-left"></i> اطلاعات بیشتر </a>
+                </div>
+            </div>
+        </div>
+        <!-- /.row -->
+        <!-- Main row -->
+        <div class="row">
+            <!-- Left col -->
+            <section class="col-lg-12 connectedSortable">
+                <!-- Custom tabs (Charts with tabs)-->
+                <div class="nav-tabs-custom">
+                    <!-- Tabs within a box -->
+                    <ul class="nav nav-tabs pull-right">
+                        <li class="active"><a href="#revenue-chart" data-toggle="tab" id="UpdateUsers">بروزرسانی</a></li>
+                        <li class="pull-right header"><i class="fa fa-inbox"></i> مدیریت کاربران</li>
+                    </ul>
+                    <div class="tab-content no-padding" id="tabForm" style="direction:rtl;">
+                        @Html.Partial("~/Views/Shared/Users/_UsersUpdate.cshtml", Model)
+
+                    </div>
+                    <div class="tab-content no-padding" id="tabFormUpdate" style="display:none;">
+
+                    </div>
+                    <div class="row" id="loadingGid" style="display:none;">
+                        <div class="col-md-12">
+                            <img src="~/Images/loading.gif" height="200px;" />
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <!-- /.row (main row) -->
+        <div class="row" style="display:none;" id="mainError">
+            <div class="col-md-12">
+                <div class="box box-default">
+                    <div class="box-header with-border">
+                        <i class="fa fa-warning"></i>
+                        <h3 class="box-title">پیام های اعلامی از سمت سرور</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <div class="alert alert-danger alert-dismissible" style="display:none;" id="ErrorAlert">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            <h4><i class="icon fa fa-ban"></i> پیام!</h4>
+                            <p id="pErrorAlert"></p>
+                        </div>
+                        <div class="alert alert-info alert-dismissible" style="display:none;" id="InfoAlert">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            <h4><i class="icon fa fa-info"></i> پیام!</h4>
+                            <p id="pInfonAlert"></p>
+                        </div>
+                        <div class="alert alert-warning alert-dismissible" style="display:none;" id="WarningAlert">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            <h4><i class="icon fa fa-warning"></i> پیام!</h4>
+                            <p id="pWarningAlert"></p>
+                        </div>
+                        <div class="alert alert-success alert-dismissible" style="display:none;" id="SuccessAlert">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            <h4><i class="icon fa fa-check"></i> پیام!</h4>
+                            <p id="pSuccessAlert"></p>
+                        </div>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <!-- /.box -->
+            </div>
+            <!-- /.col -->
+        </div>
+    </section>
+    <!-- /.content -->
+</div>
+@section scripts{
+    <script src="~/Scripts/ShowAlerts.js"></script>
+    <script src="~/Scripts/AjaxCustomize.js"></script>
+    <script>
+        $(document).ready(function () {
+            var userKendoMultiSelect = $("#companies").data("kendoMultiSelect");
+            userKendoMultiSelect.value();
+        });
+
+        function UpdateRecordKendo() {
+            var gsgrid = $("#GridKendoUsersGrid").data("kendoGrid");
+            var selectedIt = gsgrid.dataItem(gsgrid.select());
+            $("#txtUPName").val(selectedIt.name);
+            $("#txtUPFamily").val(selectedIt.family);
+            $("#txtUPNationalCode").val(selectedIt.nationalCode);
+            $("#txtID").val(selectedIt.Id);
+            $("#txtUPEmail").val(selectedIt.email);
+            var userKendoMultiSelect = $("#companies").data("kendoMultiSelect");
+            var userRolesKendoMultiSelect = $("#RolesUser").data("kendoMultiSelect");
+
+            $.ajax({
+                type: "GET",
+                url: "/api/UserApi/GetUserInformation?Id=" + selectedIt.Id,
+                dataType: "json",
+                contentType: 'application/json; charset=utf-8',
+                success: function (data) {
+                    var selectedItems = [];
+                    $.each(data.UserCompanies, function (i, item) {
+                        selectedItems.push(item.Id);
+                    });
+                    console.log(selectedItems);
+                    userKendoMultiSelect.value(selectedItems);
+
+                    selectedItems = [];
+                    $.each(data.UserRoles, function (i, item) {
+                        selectedItems.push(item.Id);
+                    });
+                    userRolesKendoMultiSelect.value(selectedItems);
+                },
+                error: function (data) {
+                    var object = $.parseJSON(data.responseText);
+                    var errorMsg = object.ExceptionMessage.toString();
+                    showError(errorMsg, ErrorAlert, pErrorAlert);
+                    $("#loadingGid").hide();
+                }
+            });
+
+        }
+        function AdvSearch() {
+            var Name          = $("#txtSRName").val();
+            var Family        = $("#txtSRFamily").val();
+            var NationalID    = $("#txtSRNationalCode").val();
+            var Email         = $("#txtSREmail").val();
+            return {
+                UserName: NationalID,
+                Name: Name,
+                Family: Family,
+                Email:Email
+            };
+        }
+
+
+
+        $("#btnSearch").click(function () {
+            var Name = $("#txtSRName").val();
+            var Family = $("#txtSRFamily").val();
+            var NationalID = $("#txtSRNationalCode").val();
+            var Email = $("#txtSREmail").val();
+            var grid = $("#GridKendoUsersGrid").data("kendoGrid");
+            var dataSource = grid.dataSource;
+            dataSource.filter({
+                "field": "CountryCode",
+                "operator": "eq",
+                "value": NationalID
+            });
+        })
+
+
+
+
+        //یک کمپانی ایجاد
+
+        $("#btnRegisterUpdate").click(function (e) {
+            e.preventDefault();
+            if ($("form[name='updateUsersform']").valid()) {
+                var Name = $("#txtUPName").val();
+                var Family = $("#txtUPFamily").val();
+                var NationalID = $("#txtUPNationalCode").val();
+                var ID = $("#txtID").val();
+                var Email = $("#txtUPEmail").val();
+                var password = $("#txtUpPassword").val();
+
+                var options = $("#companies").data("kendoMultiSelect");
+                var companies = options.value();
+                var userCompanies = [];
+                $.each(companies, function (i, item) {
+                    var dataCompany = {
+                        Id: item
+                    }
+                    userCompanies.push(dataCompany);
+                });
+
+                var _image = $("#imgeSingUP").get(0);
+                var formData = new FormData();
+
+                var optionsRole = $("#RolesUser").data("kendoMultiSelect");
+                var roles = optionsRole.value();
+                var userRoles = [];
+                $.each(roles, function (i, item) {
+                    var dataRole = {
+                        Id: item
+                    }
+
+                    userRoles.push(dataRole);
+                });
+
+                var data = {
+                    name: Name,
+                    family: Family,
+                    nationalCode: NationalID,
+                    email: Email,
+                    password: password,
+                    UserCompanies: userCompanies,
+                    UserRoles: userRoles
+                };
+
+                formData.append("file", _image.files[0]);
+                formData.append("FormData", JSON.stringify(data));
+
+                $.ajax({
+                    type: "POST",
+                    url: "/api/userapi/Update",
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function (data) {
+                        console.log(data);
+                        if (data.isError == true) {
+                            showError(data.Errors.Message, data.Errors.EnumElements, data.Errors.pEnumElements);
+                        } else {
+                            showError(data.Errors.Message, data.Errors.EnumElements, data.Errors.pEnumElements);
+                        }
+                    },
+                    error: function (data) {
+                        var object = $.parseJSON(data.responseText);
+                        var errorMsg = object.ExceptionMessage.toString();
+                        showError(errorMsg, ErrorAlert, pErrorAlert);
+                        $("#loadingGid").hide();
+                    }
+                });
+
+                //AjaxCustomize(data, "/api/UserApi/Update", "POST");
+            }
+        });
+
+
+    </script>
+
+    <script type="text/javascript">
+        $("form[name='updateUsersform']").validate({
+            rules: {
+                txtUPName: "required",
+                txtUPFamily: "required",
+                txtUPNationalCode: {
+                    required: true,
+                    number: true,
+                    minlength: 8
+                },
+                txtUPEmail: {
+                    required: true,
+                    email:true
+                },
+                txtUpCPassword: {
+                    equalTo: "#txtUpPassword"
+                }
+            },
+            messages: {
+                txtUPName: ".نام کاربر را وارد نمایید",
+                txtUPFamily: "نام خانوادگی را وارد نمایید",
+                txtUPNationalCode: "کد ملی را به درستی وارد نمایید.",
+                txtUPEmail: "ایمیل را  به درستی وارد نمایید.",
+                txtUpCPassword: "پسورد وارد شده مطابقت ندارد."
+            }
+        });
+    </script>
+}

@@ -1,0 +1,78 @@
+﻿<div class="col-md-12">
+    <!-- Horizontal Form -->
+    <div class="box box-info">
+        <div class="box-header with-border">
+            <h3 class="box-title">ویرایش اطلاعات</h3>
+        </div>
+
+
+
+
+        <div class="box-header">
+
+            <form class="form-horizontal" name="updatePackageForm">
+                <div class="box-body">
+                    <div class="form-group">
+                        <label for="inputEmail3" class="col-sm-3 control-label"> انتخاب سطح بسته</label>
+                        <div class="col-sm-4">
+
+                            @(Html.Kendo().DropDownList()
+                                          .Name("drpUPCountry")
+                                          .OptionLabel("انتخاب سطح بسته")
+                                          .DataTextField("Name")
+                                          .DataValueField("Id")
+                                          .Filter("contains")
+                                          .DataSource(source =>
+                                          {
+                                              source.Read(read =>
+                                              {
+                                                  read.Url("/api/packageapi/Pacakges?getAll=true");
+
+                                              });
+                                          })
+                                          .Events(events => events.Change("UpdateForm"))
+                                          .Enable(true)
+                            )
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="PackageName" class="col-sm-3 control-label"> سطح دسته بندی(واحد - کارتن - پالت...)</label>
+                        <div class="col-sm-4">
+                            @Html.TextBox("txtPackageName", null, new { @class = "form-control", id = "PackageName", placeholder = "سطح بسته" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="PackageCount" class="col-sm-3 control-label">کد سطح مورد نظر(صفر برای واحد کالا و ...)</label>
+                        <div class="col-sm-4">
+                            @Html.TextBox("txtCount", null, new { @class = "form-control", id = "PackageCount", placeholder = "کد" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inputEmail3" class="col-sm-1 control-label">فعال</label>
+                        <div class="col-sm-1">
+                            <input type="checkbox" name="IsEnableEntity" id="IsEnableEntity" />
+                        </div>
+                    </div>
+
+                    <div class="form-group hidden">
+                        <label for="PackageID" class="col-sm-1 control-label"> ID</label>
+                        <div class="col-sm-4">
+                            @Html.TextBox("PackageID", null, new { @class = "form-control", id = "PackageID", placeholder = "کد بین الملل" })
+                        </div>
+                    </div>
+
+                </div>
+                <!-- /.box-body -->
+                <div class="box-footer">
+                    <button type="submit" class="btn btn-info pull-right" id="btnRegisterUpdate">ویرایش</button>
+                </div>
+                <!-- /.box-footer -->
+            </form>
+        </div>
+
+    </div>
+</div>

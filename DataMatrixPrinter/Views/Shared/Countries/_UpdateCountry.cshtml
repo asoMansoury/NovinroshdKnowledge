@@ -1,0 +1,85 @@
+﻿<div class="col-md-12">
+    <!-- Horizontal Form -->
+    <div class="box box-info">
+        <div class="box-header with-border">
+            <h3 class="box-title">ویرایش اطلاعات</h3>
+        </div>
+
+
+
+
+        <div class="box-header">
+
+            <form class="form-horizontal" name="updateCountryForm">
+                <div class="box-body">
+                    <div class="form-group">
+                        <label for="inputEmail3" class="col-sm-1 control-label"> انتخاب کشور</label>
+                        <div class="col-sm-4">
+
+                            @(Html.Kendo().DropDownList()
+                                          .Name("drpUPCountry")
+                                          .OptionLabel("انتخاب کشور")
+                                          .DataTextField("CountryName")
+                                          .DataValueField("Id")
+                                          .Filter("contains")
+                                          .DataSource(source =>
+                                          {
+                                              source.Read(read =>
+                                            {
+                                                read.Url("/api/countryapi/countries?getAll=true");
+
+                                            });
+                                          })
+                                          .Events(events=>events.Change("UpdateForm"))
+                                          .Enable(true)
+                            )
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="txtCountryName" class="col-sm-1 control-label"> نام کشور</label>
+                        <div class="col-sm-4">
+                            @Html.TextBox("txtCountryName", null, new { @class = "form-control", id = "txtUPCountryName", placeholder = "نام کشور" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="txtGs1Country" class="col-sm-1 control-label">کد GS1</label>
+                        <div class="col-sm-4">
+                            @Html.TextBox("txtGs1Country", null, new { @class = "form-control", id = "txtUPGs1Country", placeholder = "GS1" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="txtNationalCountry" class="col-sm-1 control-label"> کد بین الملل</label>
+                        <div class="col-sm-4">
+                            @Html.TextBox("txtNationalCountry", null, new { @class = "form-control", id = "txtUPNationalCountry", placeholder = "کد بین الملل" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inputEmail3" class="col-sm-1 control-label">فعال</label>
+                        <div class="col-sm-1">
+                            <input type="checkbox" name="IsEnableEntity"  id="IsEnableEntity" />
+                        </div>
+                    </div>
+
+                    <div class="form-group hidden">
+                        <label for="txtNationalCountry" class="col-sm-1 control-label"> ID</label>
+                        <div class="col-sm-4">
+                            @Html.TextBox("txtCountryID", null, new { @class = "form-control", id = "txtCountryID", placeholder = "ID" })
+                        </div>
+                    </div>
+                </div>
+                <!-- /.box-body -->
+                <div class="box-footer">
+                    <button type="button" class="btn btn-info pull-right" id="btnRegisterUpdate">ویرایش</button>
+                </div>
+                <!-- /.box-footer -->
+            </form>
+        </div>
+
+    </div>
+</div>
+

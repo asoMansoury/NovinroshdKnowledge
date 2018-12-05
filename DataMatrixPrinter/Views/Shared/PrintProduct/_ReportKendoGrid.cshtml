@@ -1,0 +1,46 @@
+﻿
+@using Kendo.Mvc.UI;
+
+@(Html.Kendo().Grid<DataMatrixPrinter.ViewModels.Business.Product.Update.ProductUpdateVm>()
+                                .Name("GridKendoProductGrid")
+                                .DataSource(
+                                datasource => datasource
+                                    .Ajax()
+                                    .PageSize(20)
+                                    .Read(read => read.Url("/api/PrintProductsapi/GetProducts").Data("AdvSearch")))
+                                    .Columns(columns =>
+                                    {
+                                        columns.Bound(c => c.Id).Visible(false);
+                                        columns.Bound(c => c.ProductCode).Title("کد محصول");
+                                        columns.Bound(c => c.mainProductName).Title("محصول اصلی");
+                                        columns.Bound(c => c.Gs1ItemCode).Title("کد Gs1").Visible(false);
+                                        columns.Bound(c => c.Gtin).Title("کد GTIN");
+                                        columns.Bound(c => c.PackingType).Title("سطح بسته بندی");
+                                        columns.Bound(c => c.CompanyCode).Visible(false);
+                                        columns.Bound(c => c.CountryCode).Visible(false);
+                                        columns.Bound(c => c.Price).Title("قیمت");
+                                        columns.Bound(c => c.Uom).Title("UOM");
+                                        columns.Bound(c => c.PackingType).Visible(false);
+                                        columns.Bound(c => c.WeightPerPack).Title("وزن هر بسته");
+                                        columns.Bound(c => c.QtyPerPack).Title("تعداد در هر بسته");
+                                        columns.Bound(c => c.Templet).Title("برچسب").Visible(false);
+                                        columns.Bound(c => c.Description).Title("توضیحات").Visible(false);
+                                        columns.Bound(c => c.CompanyName).Title("نام شرکت").Visible(false);
+                                        columns.Bound(c => c.CountryName).Title("کشور").Visible(false);
+                                        columns.Bound(c => c.TypeOfPrint).Title("نوع پرینت").Visible(true);
+                                        columns.Bound(c => c.mainProductID).Visible(false);
+                                        columns.Bound(c => c.ExpireDate).Visible(false).Title("تاریخ انقضا");
+
+                                    })
+                                 .ToolBar(tools => tools.Excel().Text("دانلود فایل اکسل"))
+                                 .Excel(excel =>
+                                        excel.FileName("Products.xlsx")
+                                        .ProxyURL(Url.Action("Excel_Export_Save", "PrintProduct"))
+                                        )
+                                 .Pageable()
+                                 .Sortable()
+                                 .Selectable()
+
+
+)
+

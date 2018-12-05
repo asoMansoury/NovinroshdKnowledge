@@ -1,0 +1,248 @@
+﻿@model DataMatrixPrinter.ViewModels.Business.UserVM.UserVM
+
+@{
+    ViewBag.Title = "UserProfile";
+}
+
+<div class="content-wrapper">
+    <!-- Main content -->
+    <section class="content">
+        <!-- Small boxes (Stat box) -->
+        <div class="row">
+            <div class="col-lg-3 col-xs-5">
+                <!-- small box -->
+                <div class="small-box bg-aqua">
+                    <div class="inner">
+                        <h3>کاربر</h3>
+                        <p>مشاهده اطلاعات کاربر</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-bag"></i>
+                    </div>
+                    <a href="@Url.Content("/User/UserProfile")" class="small-box-footer"><i class="fa fa-arrow-circle-left"></i> اطلاعات بیشتر </a>
+                </div>
+            </div>
+            <!-- ./col -->
+            <div class="col-lg-2 col-xs-5">
+                <!-- small box -->
+                <div class="small-box bg-green">
+                    <div class="inner">
+                        <h3>شرکت<sup style="font-size: 20px"></sup></h3>
+                        <p>مدیریت شرکت</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-stats-bars"></i>
+                    </div>
+                    <a href="@Url.Content("/Company/CompanyManager")" class="small-box-footer"><i class="fa fa-arrow-circle-left"></i> اطلاعات بیشتر </a>
+                </div>
+            </div>
+
+            <div class="col-lg-2 col-xs-4">
+                <!-- small box -->
+                <img src="\Images\Logos\Tranet_Logo.gif" width="120" height="120" style="margin-bottom:10px; margin-right:45px;" />
+            </div>
+            <!-- ./col -->
+            <div class="col-lg-2 col-xs-5">
+                <!-- small box -->
+                <div class="small-box bg-yellow">
+                    <div class="inner">
+                        <h3>محصولات</h3>
+                        <p>مدیریت محصولات</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-person-add"></i>
+                    </div>
+                    <a href="@Url.Content("/Product/ProductManager")" class="small-box-footer"><i class="fa fa-arrow-circle-left"></i> اطلاعات بیشتر </a>
+                </div>
+            </div>
+            <!-- ./col -->
+            <div class="col-lg-3 col-xs-5">
+                <!-- small box -->
+                <div class="small-box bg-red">
+                    <div class="inner">
+                        <h3>کاربر</h3>
+                        <p>مدیریت کاربران</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-pie-graph"></i>
+                    </div>
+                    <a href="@Url.Content("/User/UsersManager")" class="small-box-footer"><i class="fa fa-arrow-circle-left"></i> اطلاعات بیشتر </a>
+                </div>
+            </div>
+        </div>
+        <!-- /.row -->
+        <!-- Main row -->
+        <div class="row">
+            <div class="col-md-3">
+                <!-- Profile Image -->
+                <div class="box box-primary">
+                    <div class="box-body box-profile">
+                        <img class="profile-user-img img-responsive img-circle" src="\@Model.imageName" alt="User profile picture">
+                        <h3 class="profile-username text-center">@Model.name @Model.family</h3>
+                        <p class="text-muted text-center">Administrator</p>
+
+
+                        <ul class="list-group list-group-unbordered">
+                            <li class="list-group-item">
+                                <strong><i class="fa fa-book margin-r-5"></i>شماره کاربری</strong>
+                                <p class="text-muted">
+                                    @Model.nationalCode
+                                </p>
+                            </li>
+                            <li class="list-group-item">
+                                <strong><i class="fa fa-book margin-r-5"></i>ایمیل کاربر</strong>
+                                <p class="text-muted">
+                                    @Model.email
+                                </p>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <!-- /.box -->
+                <!-- About Me Box -->
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">لیست شرکت های مرتبط</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <strong><i class="fa fa-book margin-r-5"></i>نام شرکت</strong>
+                        @{
+                            if (Model.UserCompanies != null)
+                            {
+                                foreach (var item in Model.UserCompanies)
+                                {
+                                    <p class="text-muted">
+                                        @item.CompanyName
+                                    </p>
+                                }
+                            }
+                        }
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <!-- /.box -->
+            </div>
+            <!-- /.col -->
+            <div class="col-md-9">
+                <div class="nav-tabs-custom">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#activity" data-toggle="tab">فعالیت امروز</a></li>
+                        <li><a href="#settings" data-toggle="tab">ویرایش اطلاعات</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="active tab-pane" id="activity">
+                            <!-- Post -->
+                            <div class="post">
+                                <div class="user-block">
+                                    <span class="username">
+                                        <a href="#">لیست شرکت ها مربوطه کاربر</a>
+                                    </span>
+                                    <span class="description">@DateTime.Now</span>
+                                </div>
+                                <!-- /.user-block -->
+                                <div class="box-body">
+                                    <table id="example2" class="table direction table-bordered table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>نام شرکت</th>
+                                                <th>شماره تلفن شرکت</th>
+                                                <th>GS1 کد</th>
+                                                <th>آدرس شرکت</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @{
+                                                if (Model.UserCompanies != null)
+                                                {
+                                                    foreach (var item in Model.UserCompanies)
+                                                    {
+                                                        <tr>
+                                                            <td>@item.CompanyName</td>
+                                                            <td>@item.PhoneNos</td>
+                                                            <td>@item.Gs1Company</td>
+                                                            <td>@item.Address1</td>
+                                                        </tr>
+                                                    }
+                                                }
+                                            }
+
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                            </div>
+                            <!-- /.post -->
+                        </div>
+                        <!-- /.tab-pane -->
+                        <!-- /.tab-pane -->
+                        <div class="tab-pane" id="settings">
+                            <form class="form-horizontal">
+                                <div class="form-group">
+                                    <label for="inputName" class="col-sm-2 control-label">نام</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="txtName" placeholder="نام" value="@Model.name">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputEmail" class="col-sm-2 control-label">نام خانوادگی</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="txtFamily" placeholder="فامیلی" value="@Model.family">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputName" class="col-sm-2 control-label">ایمیل</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="txtEmail" placeholder="ایمیل" value="@Model.email">
+                                    </div>
+                                </div>
+                                <input style="display:none;" id="txtId" value="@Model.Id"/>
+                                <div class="form-group">
+                                    <div class="col-sm-offset-2 col-sm-10">
+                                        <button type="button" id="btnUpdateProfile" class="btn btn-danger">ثبت اطلاعات</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <!-- /.tab-pane -->
+                    </div>
+                    <!-- /.tab-content -->
+                </div>
+                <!-- /.nav-tabs-custom -->
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+        <!-- /.row (main row) -->
+    </section>
+    <!-- /.content -->
+</div>
+
+@section scripts{
+    <script src="~/Scripts/ShowAlerts.js"></script>
+    <script src="~/Scripts/AjaxCustomize.js"></script>
+    <script>
+        //یک کمپانی ایجاد
+
+        $("#btnUpdateProfile").click(function () {
+            var Name = $("#txtName").val();
+            var Family = $("#txtFamily").val();
+            var ID = $("#txtId").val();
+            var Email = $("#txtEmail").val();
+
+
+
+            var data = {
+                name: Name,
+                family: Family,
+                email: Email,
+                Id: ID
+            };
+            AjaxCustomize(data, "/api/UserApi/UpdateProfile", "POST");
+
+        });
+
+
+    </script>
+}

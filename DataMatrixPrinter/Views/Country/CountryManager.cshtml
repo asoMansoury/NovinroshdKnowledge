@@ -1,0 +1,257 @@
+﻿@model DataMatrixPrinter.ViewModels.Business.Country.CountryVm
+
+<div class="content-wrapper">
+    <!-- Main content -->
+    <section class="content">
+        <!-- Small boxes (Stat box) -->       
+        <!-- /.row -->
+        <div class="row">
+            <div class="col-lg-3 col-xs-5">
+                <!-- small box -->
+                <div class="small-box bg-aqua">
+                    <div class="inner">
+                        <h3>کاربر</h3>
+                        <p>مشاهده اطلاعات کاربر</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-bag"></i>
+                    </div>
+                    <a href="@Url.Content("/User/UserProfile")" class="small-box-footer"><i class="fa fa-arrow-circle-left"></i> اطلاعات بیشتر </a>
+                </div>
+            </div>
+            <!-- ./col -->
+            <div class="col-lg-2 col-xs-5">
+                <!-- small box -->
+                <div class="small-box bg-green">
+                    <div class="inner">
+                        <h3>شرکت<sup style="font-size: 20px"></sup></h3>
+                        <p>مدیریت شرکت</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-stats-bars"></i>
+                    </div>
+                    <a href="@Url.Content("/Company/CompanyManager")" class="small-box-footer"><i class="fa fa-arrow-circle-left"></i> اطلاعات بیشتر </a>
+                </div>
+            </div>
+
+            <div class="col-lg-2 col-xs-4">
+                <!-- small box -->
+                <img " src="\Images\Logos\Tranet_Logo.gif" width="120" height="120" style="margin-bottom:10px; margin-right:45px;" />
+            </div>
+            <!-- ./col -->
+            <div class="col-lg-2 col-xs-5">
+                <!-- small box -->
+                <div class="small-box bg-yellow">
+                    <div class="inner">
+                        <h3>محصولات</h3>
+                        <p>مدیریت محصولات</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-person-add"></i>
+                    </div>
+                    <a href="@Url.Content("/Product/ProductManager")" class="small-box-footer"><i class="fa fa-arrow-circle-left"></i> اطلاعات بیشتر </a>
+                </div>
+            </div>
+            <!-- ./col -->
+            <div class="col-lg-3 col-xs-5">
+                <!-- small box -->
+                <div class="small-box bg-red">
+                    <div class="inner">
+                        <h3>کاربر</h3>
+                        <p>مدیریت کاربران</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-pie-graph"></i>
+                    </div>
+                    <a href="@Url.Content("/User/UsersManager")" class="small-box-footer"><i class="fa fa-arrow-circle-left"></i> اطلاعات بیشتر </a>
+                </div>
+            </div>
+        </div>
+        <!-- Main row -->
+        <div class="row">
+            <!-- Left col -->
+            <section class="col-lg-12 connectedSortable">
+                <!-- Custom tabs (Charts with tabs)-->
+                <div class="nav-tabs-custom">
+                    <!-- Tabs within a box -->
+                    <ul class="nav nav-tabs pull-right">
+                        <li class="active"><a href="#revenue-chart" data-toggle="tab" id="CreateCompany">ایجاد</a></li>
+                        <li><a href="#sales-chart" data-toggle="tab" id="UpdateCompany">بروزرسانی</a></li>
+                        <li class="pull-right header"><i class="fa fa-inbox"></i> مدیریت کشور</li>
+                    </ul>
+                    <div class="tab-content no-padding" id="tabForm">
+                        @Html.Partial("~/Views/Shared/Countries/_CountryCreate.cshtml", Model)
+
+                    </div>
+                    <div class="tab-content no-padding" id="tabFormUpdate" style="display:none;">
+                        @Html.Partial("~/Views/Shared/Countries/_UpdateCountry.cshtml")
+                    </div>
+                    <div class="row" id="loadingGid" style="display:none;">
+                        <div class="col-md-12">
+                            <img src="~/Images/loading.gif" height="200px;" />
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div class="row" style="display:none;" id="mainError">
+            <div class="col-md-12">
+                <div class="box box-default">
+                    <div class="box-header with-border">
+                        <i class="fa fa-warning"></i>
+                        <h3 class="box-title">پیام های اعلامی از سمت سرور</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <div class="alert alert-danger alert-dismissible" style="display:none;" id="ErrorAlert">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            <h4><i class="icon fa fa-ban"></i> پیام!</h4>
+                            <p id="pErrorAlert"></p>
+                        </div>
+                        <div class="alert alert-info alert-dismissible" style="display:none;" id="InfoAlert">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            <h4><i class="icon fa fa-info"></i> پیام!</h4>
+                            <p id="pInfonAlert"></p>
+                        </div>
+                        <div class="alert alert-warning alert-dismissible" style="display:none;" id="WarningAlert">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            <h4><i class="icon fa fa-warning"></i> پیام!</h4>
+                            <p id="pWarningAlert"></p>
+                        </div>
+                        <div class="alert alert-success alert-dismissible" style="display:none;" id="SuccessAlert">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            <h4><i class="icon fa fa-check"></i> پیام!</h4>
+                            <p id="pSuccessAlert"></p>
+                        </div>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <!-- /.box -->
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row (main row) -->
+    </section>
+    <!-- /.content -->
+</div>
+@section scripts{
+    <script src="~/Scripts/ShowAlerts.js"></script>
+    <script src="~/Scripts/AjaxCustomize.js"></script>
+
+    <script>
+        $("#CreateCompany").click(function () {
+            $("#tabFormUpdate").hide();
+            $("#tabForm").show();
+            $("#mainError").hide();
+            $("#loadingGid").hide();
+
+        });
+        $("#UpdateCompany").click(function () {
+            $("#tabForm").hide();
+            $("#tabFormUpdate").show();
+            $("#mainError").hide();
+            $("#loadingGid").hide();
+        });
+        //ارسال اطلاعات کشور به سمت سرور و دریافت اطلاعات کشور انتخابی
+        function UpdateForm() {
+            var itemCountry = $("#drpUPCountry").val();
+            $.ajax({
+                type: "GET",
+                url: "/api/CountryApi/GetCountryPrefix?Code=" + itemCountry,
+                dataType: "json",
+                contentType: 'application/json; charset=utf-8',
+                success: function (data) {
+                    $("#txtUPCountryName").val(data.CountryName);
+                    $("#txtUPGs1Country").val(data.CountryGS1);
+                    $("#txtUPNationalCountry").val(data.CountryNationalCode);
+                    $("#txtCountryID").val(data.Id);
+                    $('#IsEnableEntity').prop('checked', data.isEnable);
+                }
+            });
+        }
+
+
+        $("#btnRegisterCreate").click(function (event) {
+            event.preventDefault();
+            if ($("form[name='createCountryForm']").valid()) {
+                var countryGS1 = $("#GS1Code").val();
+                var CountryName = $("#CountryName").val();
+                var CountryNationalCode = $("#NationalCode").val();
+
+                var data = {
+                    CreateCountry: {
+                        CountryGS1Code: countryGS1,
+                        CountryName: CountryName,
+                        NationalCode: CountryNationalCode,
+                        isEnable: true
+                    }
+                };
+                AjaxCustomize(data, "/api/CountryApi/CreateCountry", "POST");
+            }
+
+        });
+
+        $("#btnRegisterUpdate").click(function (e) {
+            e.preventDefault();
+            if ($("form[name='updateCountryForm']").valid()) {
+                var CountryName = $("#txtUPCountryName").val();
+                var GS1CountryCode = $("#txtUPGs1Country").val();
+                var nationalCountry = $("#txtUPNationalCountry").val();
+                var ID = $("#txtCountryID").val();
+
+                var isChecked = 0;
+                if ($('#IsEnableEntity').is(':checked'))
+                    isChecked = 1;
+                else
+                    isChecked = 0;
+
+                var data = {
+                    UpdateCountry: {
+                        CountryGS1: GS1CountryCode,
+                        CountryName: CountryName,
+                        CountryNationalCode: nationalCountry,
+                        Id: ID,
+                        isEnable:isChecked
+                    }
+                };
+
+                AjaxCustomize(data, "/api/CountryApi/UpdateCountry", "POST");
+            }
+        });
+
+
+    </script>
+
+    <script type="text/javascript">
+        $("form[name='createCountryForm']").validate({
+            rules: {
+                txtCrCountrName: "required",
+                txtCrCountryGS1: {
+                    required: true,
+                    number: true,
+                    rangelength: [3, 3]
+                }
+            },
+            messages: {
+                txtCrCountrName: "این فیلد الزامی است.",
+                txtCrCountryGS1: "این فیلد الزامی است",
+            }
+        });
+
+        $("form[name='updateCountryForm']").validate({
+            rules: {
+                txtCountryName: "required",
+                txtGs1Country: {
+                    required: true,
+                    number: true,
+                    rangelength: [3, 3]
+                }
+            },
+            messages: {
+                txtCountryName: "این فیلد الزامی است.",
+                txtGs1Country: "این فیلد الزامی است",
+            }
+        });
+    </script>
+}

@@ -1,0 +1,169 @@
+﻿@model DataMatrixPrinter.ViewModels.Business.UserVM.UserRegistryVM
+
+
+
+<div class="col-md-12">
+    <!-- Horizontal Form -->
+    <div class="box box-info">
+        <div class="box-header with-border">
+            <h3 class="box-title">ویرایش اطلاعات</h3>
+        </div>
+
+        <div class="box-header">
+
+            <div class="box-header with-border">
+                <h3 class="box-title">انتخاب کاربر</h3>
+            </div>
+
+            <form class="form-horizontal" >
+                <div class="box-body">
+                    <div class="form-group">
+                        <label for="txtSRName" class="col-sm-1 control-label"> نام کاربر</label>
+                        <div class="col-sm-4">
+                            @Html.TextBox("txtSRName", null, new { @class = "form-control", id = "txtSRName", placeholder = "نام" })
+                        </div>
+
+                        <label for="txtSRFamily" class="col-sm-1 control-label">  نام خانوادگی</label>
+                        <div class="col-sm-4">
+                            @Html.TextBox("txtSRFamily", null, new { @class = "form-control", id = "txtSRFamily", placeholder = "نام خانوادگی" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="txtSRNationalCode" class="col-sm-1 control-label">کد ملی</label>
+                        <div class="col-sm-4">
+                            @Html.TextBox("txtSRNationalCode", null, new { @class = "form-control", id = "txtSRNationalCode", placeholder = "کدل ملی" })
+                        </div>
+
+                        <label for="txtSREmail" class="col-sm-1 control-label">ایمیل</label>
+                        <div class="col-sm-4">
+                            @Html.TextBox("txtSREmail", null, new { @class = "form-control", id = "txtSREmail", placeholder = "ایمیل" })
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+            <div class="box-footer">
+                <button type="submit" class="btn btn-info pull-right" id="btnSearch">جستجو</button>
+            </div>
+
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-1 control-label"> نتیجه جستجو</label>
+                <div class="col-sm-10 k-rtl">
+                    @Html.Partial("~/Views/Shared/Users/_UsersKendo.cshtml")
+                </div>
+            </div>
+        </div>
+        <hr />
+        <!-- /.box-header -->
+        <!-- form start -->
+        <!-- Trigger the modal with a button -->
+
+
+
+
+
+        <div class="box-header">
+            <div class="box-header with-border">
+                <h3 class="box-title">ویرایش کاربر انتخابی</h3>
+            </div>
+
+            <form class="form-horizontal"  name="updateUsersform">
+                <div class="box-body well">
+                    <div class="form-group">
+                        <label for="txtUPName" class="col-sm-1 control-label"> نام کاربر</label>
+                        <div class="col-sm-4">
+                            @Html.TextBox("txtUPName", null, new { @class = "form-control", id = "txtUPName", placeholder = "نام" })
+                        </div>
+
+                        <label for="txtUPFamily" class="col-sm-1 control-label">  نام خانوادگی</label>
+                        <div class="col-sm-4">
+                            @Html.TextBox("txtUPFamily", null, new { @class = "form-control", id = "txtUPFamily", placeholder = "نام خانوادگی" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="txtUPNationalCode" class="col-sm-1 control-label">کد ملی</label>
+                        <div class="col-sm-4">
+                            @Html.TextBox("txtUPNationalCode", null, new { @class = "form-control", id = "txtUPNationalCode", placeholder = "کدل ملی" })
+                        </div>
+
+                        <label for="txtUPEmail" class="col-sm-1 control-label">ایمیل</label>
+                        <div class="col-sm-4">
+                            @Html.TextBox("txtUPEmail", null, new { @class = "form-control", id = "txtUPEmail", placeholder = "ایمیل" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="txtUpPassword" class="col-sm-1 control-label">کلمه عبور</label>
+                        <div class="col-sm-4">
+                            @Html.TextBox("txtUpPassword", null, new { @class = "form-control", id = "txtUpPassword", placeholder = "کلمه عبور" })
+                        </div>
+                        <label for="txtUpCPassword" class="col-sm-1 control-label"> تکرار کلمه عبور</label>
+                        <div class="col-sm-4">
+                            @Html.TextBox("txtUpCPassword", null, new { @class = "form-control", id = "txtUpCPassword", placeholder = "کلمه عبور مجدد" })
+                        </div>
+                        <div class="col-sm-4 hidden">
+                            @Html.TextBox("txtID", null, new { @class = "form-control", id = "txtID", placeholder = "کلمه عبور مجدد" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="txtUpCompanies" class="col-sm-1 control-label"> شرکت ها</label>
+                        <div class="col-sm-10">
+                            <p>
+
+                                @(Html.Kendo().MultiSelect()
+                                              .Name("companies")
+                                              .Filter("contains")
+                                              .AutoClose(false)
+                                              .BindTo(Model.companies)
+                                              .DataTextField("CompanyName")
+                                              .DataValueField("Id")
+                                )
+
+                            </p>
+                        </div>
+
+
+                    </div>
+
+                    <div class="form-group">
+                        <label for="txtUpCompanies" class="col-sm-1 control-label"> نقش های کاربر</label>
+                        <div class="col-sm-10">
+                            <p>
+
+                                @(Html.Kendo().MultiSelect()
+                                              .Name("RolesUser")
+                                              .Filter("contains")
+                                              .AutoClose(false)
+                                              .BindTo(Model.Roles)
+                                              .DataTextField("Name")
+                                              .DataValueField("Id")
+                                )
+
+                            </p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="txtUpCompanies" class="col-sm-1 control-label"> انتخاب عکس</label>
+                        <div class="col-sm-10">
+                            <p>
+                                <label for="lblImageSignUP" class="uname">عکس کاربر</label>
+                                <input id="imgeSingUP" name="imageSingUP" type="file" />
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- /.box-body -->
+                <div class="box-footer">
+
+                    <button type="submit" class="btn btn-info pull-right" id="btnRegisterUpdate">ویرایش</button>
+                </div>
+                <!-- /.box-footer -->
+            </form>
+        </div>
+
+    </div>
+</div>

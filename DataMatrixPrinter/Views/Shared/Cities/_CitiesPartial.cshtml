@@ -1,0 +1,21 @@
+﻿@using Kendo.Mvc.UI;
+@model string
+@(Html.Kendo().DropDownList()
+.Name(Model)
+.OptionLabel("انتخاب شهر")
+.DataTextField("CityName")
+.DataValueField("Id")
+.Filter("contains")
+.DataSource(source =>
+{
+    source.Read(read =>
+    {
+        read.Url("/api/cityapi/Cities");
+
+    });
+})
+
+
+)
+
+

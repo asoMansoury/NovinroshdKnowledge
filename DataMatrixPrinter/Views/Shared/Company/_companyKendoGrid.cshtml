@@ -1,0 +1,35 @@
+﻿@using Kendo.Mvc.UI;
+
+@(Html.Kendo().Grid<DataMatrixPrinter.ViewModels.Business.Company.Update.CompanyUpdateVm>()
+                                .Name("GridKendoCompanyGrid")
+                                .DataSource(
+                                datasource => datasource
+                                    .Ajax()
+                                    .PageSize(20)
+                                    .Read(read => read.Url("/api/companyapi/GetCompanies").Data("AdvSearch"))
+                                    )
+                                    .Columns(columns =>
+                                    {
+                                        columns.Bound(c => c.CompanyName).Title("نام شرکت");
+                                        columns.Bound(c => c.Gs1Company).Title("کد شرکت");
+                                        columns.Bound(c => c.PhoneNos).Title("شماره تلفن");
+                                        columns.Bound(c => c.WebSite).Title(" وبسایت شرکت");
+                                        columns.Bound(c => c.CountryName).Title("کشور");
+                                        columns.Bound(c => c.CompanyOptionalNumber).Title("رقم اختیاری");
+                                        columns.Bound(c => c.Address1).Width("80").Title("آدرس اول");
+                                        columns.Bound(c => c.Address2).Width("80").Title("آدرس دوم");
+                                        columns.Bound(c => c.Address3).Width("80").Title("آدرس سوم");
+                                        columns.Bound(c => c.CountryCode).Visible(false);
+                                        columns.Bound(c => c.StateCode).Visible(false);
+                                        columns.Bound(c => c.CountryGS1).Visible(false);
+
+                                    })
+                                    .Excel(excel =>
+                                        excel.FileName("Products.xlsx")
+                                        .ProxyURL(Url.Action("Excel_Export_Save", "PrintProduct"))
+                                        )
+                                 .Pageable()
+                                 .Sortable()
+                                 .Selectable()
+                                 .Events(events=>events.Change("UpdateRecordKendo"))
+)

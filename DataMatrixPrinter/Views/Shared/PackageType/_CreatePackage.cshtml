@@ -1,0 +1,34 @@
+﻿
+<div class="col-md-12">
+    <!-- Horizontal Form -->
+    <div class="box box-info">
+        <div class="box-header with-border">
+            <h3 class="box-title">وارد کردن اطلاعات</h3>
+        </div>
+        <!-- /.box-header -->
+        <!-- form start -->
+        <form class="form-horizontal" name="createPackageForm">
+            <div class="box-body">
+                <div class="form-group" >
+                    <label for="CRpackageName" class="col-sm-3 control-label" style="direction:rtl;"> سطح دسته بندی(واحد - کارتن - پالت...)</label>
+                    <div class="col-sm-4">
+                        @Html.TextBox("txtPackage", null, new { @class = "form-control", id = "CRpackageName", placeholder = "سطح بسته بندی" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="CRPackageCount" class="col-sm-3 control-label" style="direction:rtl;">کد سطح مورد نظر(صفر برای واحد کالا و ...)</label>
+                    <div class="col-sm-4">
+                        @Html.TextBox("txtPackageCount", null, new { @class = "form-control", id = "CRPackageCount", placeholder = "کد" })
+                    </div>
+                </div>
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer">
+                <button type="reset" class="btn btn-default" id="btnClearCreate">پاک کردن</button>
+                <button type="submit" class="btn btn-info pull-right" id="btnRegisterCreate">ثبت</button>
+            </div>
+            <!-- /.box-footer -->
+        </form>
+    </div>
+</div>

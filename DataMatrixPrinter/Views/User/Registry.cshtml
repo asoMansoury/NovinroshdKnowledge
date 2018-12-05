@@ -1,0 +1,257 @@
+﻿@model DataMatrixPrinter.ViewModels.Business.UserVM.UserRegistryVM
+@using Kendo.Mvc.UI;
+@using Microsoft.AspNet.Identity
+@using DataMatrixPrinter.ServiceLayer.EfServices.Identites;
+@using Microsoft.AspNet.Identity.Owin;
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<!--[if lt IE 7 ]> <html lang="en" class="no-js ie6 lt8"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="en" class="no-js ie7 lt8"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en" class="no-js ie8 lt8"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="en" class="no-js ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
+<html lang="en" class="no-js">
+<!--<![endif]-->
+<head>
+    <meta charset="UTF-8" />
+    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">  -->
+    <link href="~/Content/fonts/MainFont.css" rel="stylesheet" />
+
+    <title>ثبت نام کاربر</title>
+    <link href="~/Content/AdminPanel/RegisterPage.css" rel="stylesheet" />    
+    @*<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />*@
+    @*<script src="~/Content/jquery-3.2.1.min.js"></script>*@
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    @*<script src="~/Content/jquery-3.2.1.min.js"></script>*@
+    <script src="~/Content/Kendo/Scripts/bootstrap.js"></script>
+
+    <script src="~/Content/jquery.validate.min.js"></script>
+
+    <script src="~/Content/Kendo/Scripts/modernizr-2.8.3.js"></script>
+    <script src="~/Content/Kendo/respond.min.js"></script>
+   
+    <link href="~/Content/Kendo/css/kendo/2014.2.903/kendo.common-bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/Kendo/css/kendo/2014.2.903/kendo.bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/Kendo/css/kendo/2014.2.903/kendo.default.min.css" rel="stylesheet" />
+    <link href="~/Content/Kendo/css/kendo/2014.2.903/kendo.common.min.css" rel="stylesheet" />
+    <link href="~/Content/Kendo/Rtl/kendo.rtl.min.css" rel="stylesheet" />
+    <script src="~/Content/Kendo/Scripts/kendo/2014.2.903/kendo.web.min.js"></script>
+    <script src="~/Content/Kendo/Scripts/kendo/2014.2.903/kendo.aspnetmvc.min.js"></script>
+    <style type="text/css">
+        #registerForm p{
+            color:black;
+            font-size:large;
+            font-weight:bold;
+        }
+
+        #registerForm  .error{
+            color:red;
+            font-size:large;
+            font-weight:bold;
+        }
+
+        .bodyFont{
+            font-family:BNazninFont;
+            font-size:22px;
+            font-weight:bold;
+        }
+    </style>
+
+
+</head>
+<body class="bodyFont">
+    <div class="container ">
+
+        <header>
+            <h1>صفحه ثبت نام</h1>
+
+        </header>
+        <section>
+            <div id="container_demo">
+                <!-- hidden anchor to stop jump http://www.css3create.com/Astuce-Empecher-le-scroll-avec-l-utilisation-de-target#wrap4  -->
+                <a class="hiddenanchor" id="toregister"></a>
+                <a class="hiddenanchor" id="tologin"></a>
+                <div id="wrapper">
+
+                    <div id="login">
+                        <form  id="registerForm" name="registerForm" autocomplete="on" action="" onsubmit="return(false)">
+                            <h1> ثبت اطلاعات </h1>
+                            <p>
+                                <label for="usernamesignup" class="uname">نام </label>
+                                <input id="usernamesignup" name="usernamesignup"  type="text" placeholder="mysuperusername690" />
+                            </p>
+                            <p>
+                                <label for="familyUser" class="uname">نام خانوادگی </label>
+                                <input id="familyUser" name="usernme"  type="text" placeholder="mysuperusername690" />
+                            </p>
+                            <p>
+                                <label for="nationalCode" class="uname">کد ملی</label>
+                                <input id="nationalCode" name="nationalCode"  type="text" placeholder="mysuperusername690" />
+                            </p>
+                            <p>
+                                <label for="emailsignup" class="youmail">ایمیل</label>
+                                <input id="emailsignup" name="emailsignup"  type="email" placeholder="mysupermail@mail.com" />
+                            </p>
+
+                            <p>
+                                <label for="optional">انتخاب نقش کاربر</label><br />
+                                @(Html.Kendo().MultiSelect()
+                                                 .Name("optionalRole")
+                                                 .AutoClose(false)
+                                                 .Placeholder("انتخاب کنید")
+                                                 .DataTextField("Name")
+                                                 .DataValueField("Id")
+                                                 .BindTo(Model.Roles)
+                                                 .Events(events => events.Change("selectMulti"))
+                                )
+                            </p>
+
+                            <p>
+                                <label for="lblImageSignUP" class="uname">عکس کاربر</label>
+                                <input id="imgeSingUP" name="imageSingUP" type="file"  />
+                            </p>
+
+                            <p>
+                                <label for="passwordsignup" class="youpasswd">کلمه عبور</label>
+                                <input id="passwordsignup" name="passwordsignup"  type="password" placeholder="eg. X8df!90EO" />
+                            </p>
+                            <p>
+                                <label for="passwordsignup_confirm" class="youpasswd">کلمه عبور مجدد</label>
+                                <input id="passwordsignup_confirm" name="passwordsignup_confirm"  type="password" placeholder="eg. X8df!90EO" />
+                            </p>
+
+
+                            <p>
+                                <div class="alert alert-success" id="errorAlert">
+
+                                </div>
+                            </p>
+
+                            <p class="signin button">
+                                @*<input type="submit" value="ثبت نام" id="btnReg"   />*@
+                                <button type="submit" class="btn btn-default" value="ثبت نام" id="btnReg">ثبت نام</button>
+                                <a href="@Url.Content("~/User/UserProfile")">برگشت به صفحه اصلی</a>
+                            </p>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </div>
+
+
+    <script>
+        var options = null;
+        var optionsRole = null;
+        function selectMulti() {
+            options = $("#optional").data("kendoMultiSelect");
+            optionsRole = $("#optionalRole").data("kendoMultiSelect");
+        }
+
+
+
+        $("#btnReg").click(function () {
+
+            if ($("form[name='registerForm']").valid()) {
+                
+                var formData = new FormData();
+                var _image = $("#imgeSingUP").get(0);
+
+                options = $("#optional").data("kendoMultiSelect");
+                optionsRole = $("#optionalRole").data("kendoMultiSelect");
+                var companies = options.value();
+                var roles = optionsRole.value();
+                var username = $("#usernamesignup").val();
+                var email = $("#emailsignup").val();
+                var password = $("#passwordsignup").val();
+                var family = $("#familyUser").val();
+                var national = $("#nationalCode").val();
+
+                var data = {
+                    name: username,
+                    email: email,
+                    password: password,
+                    companies: companies.toString(),
+                    nationalCode: national,
+                    family: family,
+                    roleName: roles.toString()
+                };
+               
+                formData.append("file", _image.files[0]);
+                formData.append("FormData", JSON.stringify(data));
+
+
+                $("#errorAlert").empty();
+                $.ajax({
+                    type: "POST",
+                    url: "/api/userapi/RegisterUser",
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function (data) {
+                        console.log(data);
+                        if (data.isError == true) {
+                            $("#errorAlert").html("<strong>Error : </strong>" + data.Errors.Message + "<br>");
+                        } else {
+                            $("#errorAlert").empty();
+                            $("#errorAlert").html("کاربر در سیستم ثبت گردید.");
+                        }
+                    },
+                    error: function (data) {
+                        var object = $.parseJSON(data.responseText);
+                        var errorMsg = object.ExceptionMessage.toString();
+                        showError(errorMsg, ErrorAlert, pErrorAlert);
+                        $("#loadingGid").hide();
+                    }
+                });
+            }
+            else {
+                console.log('form is not validate');
+            }
+        });
+    </script>
+    <style>
+        .demo-section label {
+            display: block;
+            margin: 15px 0 5px 0;
+        }
+
+        #get {
+            float: right;
+            margin: 25px auto 0;
+        }
+    </style>
+
+    <script type="text/javascript">
+        
+            $("form[name='registerForm']").validate({
+                rules: {
+                    usernamesignup: "required",
+                    usernme: "required",
+                    optional:"required",
+                    nationalCode: "required",
+                    emailsignup: "required",
+                    passwordsignup:"required",
+                    passwordsignup_confirm: {
+                        equalTo: "#passwordsignup"
+                    }
+                },
+                messages: {
+                    usernamesignup: ".نام کاربر را وارد نمایید",
+                    usernme: "نام خانوادگی را وارد نمایید",
+                    nationalCode: "کد ملی را وارد نمایید.",
+                    emailsignup: "ایمیل را وارد نمایید.",
+                    optional:"انتخاب کنید",
+                    passwordsignup: "پسورد را وارد نمایید.",
+                    passwordsignup_confirm: " Enter Confirm Password Same as Password"
+                }
+            });
+
+    </script>
+    
+</body>
+</html>

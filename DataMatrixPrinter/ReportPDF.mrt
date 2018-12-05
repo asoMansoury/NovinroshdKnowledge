@@ -1,0 +1,429 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<StiSerializer version="1.02" type="Net" application="StiReport">
+  <Dictionary Ref="1" type="Dictionary" isKey="true">
+    <BusinessObjects isList="true" count="1">
+      <Product Ref="2" type="Stimulsoft.Report.Dictionary.StiBusinessObject" isKey="true">
+        <Alias>Product</Alias>
+        <BusinessObjects isList="true" count="0" />
+        <Category />
+        <Columns isList="true" count="7">
+          <value>GTIN,System.String</value>
+          <value>UID,System.String</value>
+          <value>LOT,System.String</value>
+          <value>EXP,System.String</value>
+          <value>Price,System.String</value>
+          <value>ImgQrCode,System.String</value>
+          <value>Image,System.Byte</value>
+        </Columns>
+        <Dictionary isRef="1" />
+        <Guid>0cbd372049024546b29b422627e46cb6</Guid>
+        <Name>Product</Name>
+      </Product>
+    </BusinessObjects>
+    <Databases isList="true" count="0" />
+    <DataSources isList="true" count="0" />
+    <Relations isList="true" count="0" />
+    <Report isRef="0" />
+    <Variables isList="true" count="0" />
+  </Dictionary>
+  <EngineVersion>EngineV2</EngineVersion>
+  <GlobalizationStrings isList="true" count="0" />
+  <MetaTags isList="true" count="0" />
+  <Pages isList="true" count="1">
+    <Page1 Ref="3" type="Page" isKey="true">
+      <Border>None;Black;2;Solid;False;4;Black</Border>
+      <Brush>Transparent</Brush>
+      <Components isList="true" count="1">
+        <DataBand1 Ref="4" type="DataBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <BusinessObjectGuid>0cbd372049024546b29b422627e46cb6</BusinessObjectGuid>
+          <ClientRectangle>0,0.2,4.72,6.4</ClientRectangle>
+          <Components isList="true" count="1">
+            <Panel4 Ref="5" type="Panel" isKey="true">
+              <Brush>Yellow</Brush>
+              <ClientRectangle>0,0,4.7,3.2</ClientRectangle>
+              <Components isList="true" count="9">
+                <Text8 Ref="6" type="Text" isKey="true">
+                  <Brush>Yellow</Brush>
+                  <ClientRectangle>2.2,1.9,1,0.4</ClientRectangle>
+                  <Conditions isList="true" count="0" />
+                  <Font>Times New Roman,10</Font>
+                  <Guid>15dee09a9d9f45408804f86be88fae25</Guid>
+                  <HorAlignment>Center</HorAlignment>
+                  <Margins>0,0,0,0</Margins>
+                  <Name>Text8</Name>
+                  <Page isRef="3" />
+                  <Parent isRef="5" />
+                  <Text>EXP</Text>
+                  <TextBrush>Black</TextBrush>
+                  <Type>Expression</Type>
+                </Text8>
+                <Text9 Ref="7" type="Text" isKey="true">
+                  <Brush>Yellow</Brush>
+                  <ClientRectangle>3.4,1.9,1,0.4</ClientRectangle>
+                  <Conditions isList="true" count="0" />
+                  <Font>Times New Roman,10</Font>
+                  <Guid>b963aae4d8e74961836fa4f58cacb1f1</Guid>
+                  <HorAlignment>Center</HorAlignment>
+                  <Margins>0,0,0,0</Margins>
+                  <Name>Text9</Name>
+                  <Page isRef="3" />
+                  <Parent isRef="5" />
+                  <Text>EXP</Text>
+                  <TextBrush>Black</TextBrush>
+                  <Type>Expression</Type>
+                </Text9>
+                <Text10 Ref="8" type="Text" isKey="true">
+                  <Brush>Yellow</Brush>
+                  <ClientRectangle>2.2,2.5,1,0.4</ClientRectangle>
+                  <Conditions isList="true" count="0" />
+                  <Font>Times New Roman,10</Font>
+                  <Guid>9397e91f42454ed8a355f5dbce0ec6a1</Guid>
+                  <HorAlignment>Center</HorAlignment>
+                  <Margins>0,0,0,0</Margins>
+                  <Name>Text10</Name>
+                  <Page isRef="3" />
+                  <Parent isRef="5" />
+                  <Text>EXP</Text>
+                  <TextBrush>Black</TextBrush>
+                  <Type>Expression</Type>
+                </Text10>
+                <Text11 Ref="9" type="Text" isKey="true">
+                  <Brush>Yellow</Brush>
+                  <ClientRectangle>3.4,2.5,1,0.4</ClientRectangle>
+                  <Conditions isList="true" count="0" />
+                  <Font>Times New Roman,10</Font>
+                  <Guid>fa5ecc849ac7436086ebed66cfbee1ca</Guid>
+                  <HorAlignment>Center</HorAlignment>
+                  <Margins>0,0,0,0</Margins>
+                  <Name>Text11</Name>
+                  <Page isRef="3" />
+                  <Parent isRef="5" />
+                  <Text>EXP</Text>
+                  <TextBrush>Black</TextBrush>
+                  <Type>Expression</Type>
+                </Text11>
+                <Text1 Ref="10" type="Text" isKey="true">
+                  <Brush>Transparent</Brush>
+                  <ClientRectangle>0.1,0,4.4,0.4</ClientRectangle>
+                  <Conditions isList="true" count="0" />
+                  <Font>B Nazanin,20</Font>
+                  <Guid>2cb6edfb8fc547a489f2b3dc8959a53b</Guid>
+                  <HorAlignment>Center</HorAlignment>
+                  <Margins>0,0,0,0</Margins>
+                  <Name>Text1</Name>
+                  <Page isRef="3" />
+                  <Parent isRef="5" />
+                  <Text>پرینت محصول</Text>
+                  <TextBrush>Black</TextBrush>
+                  <Type>Expression</Type>
+                </Text1>
+                <Panel2 Ref="11" type="Panel" isKey="true">
+                  <Brush>White</Brush>
+                  <ClientRectangle>0.1,0.4,4.4,1.4</ClientRectangle>
+                  <Components isList="true" count="4">
+                    <Panel3 Ref="12" type="Panel" isKey="true">
+                      <Brush>Transparent</Brush>
+                      <ClientRectangle>1.6,0,2.8,1.1</ClientRectangle>
+                      <Components isList="true" count="5">
+                        <txtLOT Ref="13" type="Text" isKey="true">
+                          <Brush>White</Brush>
+                          <ClientRectangle>0.7,0.5,2.1,0.2</ClientRectangle>
+                          <Conditions isList="true" count="0" />
+                          <Font>Times New Roman,10</Font>
+                          <Guid>e4862fde964341f992fca82788f45d6b</Guid>
+                          <Margins>0,0,0,0</Margins>
+                          <Name>txtLOT</Name>
+                          <Page isRef="3" />
+                          <Parent isRef="12" />
+                          <Text>{Product.LOT}</Text>
+                          <TextBrush>Black</TextBrush>
+                          <Type>DataColumn</Type>
+                        </txtLOT>
+                        <Panel1 Ref="14" type="Panel" isKey="true">
+                          <Brush>Transparent</Brush>
+                          <ClientRectangle>0,0,0.7,1</ClientRectangle>
+                          <Components isList="true" count="4">
+                            <Text2 Ref="15" type="Text" isKey="true">
+                              <Brush>White</Brush>
+                              <ClientRectangle>0,0.1,0.6,0.3</ClientRectangle>
+                              <Conditions isList="true" count="0" />
+                              <Font>Times New Roman,10</Font>
+                              <Guid>62a990fa842e4dad830a4e13b96de306</Guid>
+                              <HorAlignment>Center</HorAlignment>
+                              <Margins>0,0,0,0</Margins>
+                              <Name>Text2</Name>
+                              <Page isRef="3" />
+                              <Parent isRef="14" />
+                              <Text>GTIN</Text>
+                              <TextBrush>Black</TextBrush>
+                              <Type>Expression</Type>
+                            </Text2>
+                            <Text3 Ref="16" type="Text" isKey="true">
+                              <Brush>White</Brush>
+                              <ClientRectangle>0,0.3,0.5,0.2</ClientRectangle>
+                              <Conditions isList="true" count="0" />
+                              <Font>Times New Roman,10</Font>
+                              <Guid>1dadb35fe6e9453b8cbf4485a6ef47b9</Guid>
+                              <HorAlignment>Center</HorAlignment>
+                              <Margins>0,0,0,0</Margins>
+                              <Name>Text3</Name>
+                              <Page isRef="3" />
+                              <Parent isRef="14" />
+                              <Text>UID</Text>
+                              <TextBrush>Black</TextBrush>
+                              <Type>Expression</Type>
+                            </Text3>
+                            <Text4 Ref="17" type="Text" isKey="true">
+                              <Brush>White</Brush>
+                              <ClientRectangle>0,0.5,0.5,0.3</ClientRectangle>
+                              <Conditions isList="true" count="0" />
+                              <Font>Times New Roman,10</Font>
+                              <Guid>71e199dfd3af45b18bcb02f8f48109b4</Guid>
+                              <HorAlignment>Center</HorAlignment>
+                              <Margins>0,0,0,0</Margins>
+                              <Name>Text4</Name>
+                              <Page isRef="3" />
+                              <Parent isRef="14" />
+                              <Text>LOT</Text>
+                              <TextBrush>Black</TextBrush>
+                              <Type>Expression</Type>
+                            </Text4>
+                            <Text5 Ref="18" type="Text" isKey="true">
+                              <Brush>White</Brush>
+                              <ClientRectangle>0,0.7,0.5,0.2</ClientRectangle>
+                              <Conditions isList="true" count="0" />
+                              <Font>Times New Roman,10</Font>
+                              <Guid>7af645cdc576420e876dba6afc7bd083</Guid>
+                              <HorAlignment>Center</HorAlignment>
+                              <Margins>0,0,0,0</Margins>
+                              <Name>Text5</Name>
+                              <Page isRef="3" />
+                              <Parent isRef="14" />
+                              <Text>EXP</Text>
+                              <TextBrush>Black</TextBrush>
+                              <Type>Expression</Type>
+                            </Text5>
+                          </Components>
+                          <Conditions isList="true" count="0" />
+                          <Guid>bd96a1f0fc544b1e890b18fb640125da</Guid>
+                          <Name>Panel1</Name>
+                          <Page isRef="3" />
+                          <Parent isRef="12" />
+                        </Panel1>
+                        <txtGTIN Ref="19" type="Text" isKey="true">
+                          <Brush>White</Brush>
+                          <ClientRectangle>0.7,0.1,2.1,0.2</ClientRectangle>
+                          <Conditions isList="true" count="0" />
+                          <Font>Times New Roman,10</Font>
+                          <Guid>0f48b2e63ebb40939b555abddd214a00</Guid>
+                          <Margins>0,0,0,0</Margins>
+                          <Name>txtGTIN</Name>
+                          <Page isRef="3" />
+                          <Parent isRef="12" />
+                          <Text>{Product.GTIN}</Text>
+                          <TextBrush>Black</TextBrush>
+                          <Type>DataColumn</Type>
+                        </txtGTIN>
+                        <txtUID Ref="20" type="Text" isKey="true">
+                          <Brush>White</Brush>
+                          <ClientRectangle>0.7,0.3,2.1,0.2</ClientRectangle>
+                          <Conditions isList="true" count="0" />
+                          <Font>Times New Roman,10</Font>
+                          <Guid>1370da1ad131481cafaf7761dcdb59c2</Guid>
+                          <Margins>0,0,0,0</Margins>
+                          <Name>txtUID</Name>
+                          <Page isRef="3" />
+                          <Parent isRef="12" />
+                          <Text>{Product.UID}</Text>
+                          <TextBrush>Black</TextBrush>
+                          <Type>DataColumn</Type>
+                        </txtUID>
+                        <txtEXP Ref="21" type="Text" isKey="true">
+                          <Brush>White</Brush>
+                          <ClientRectangle>0.7,0.7,2.1,0.3</ClientRectangle>
+                          <Conditions isList="true" count="0" />
+                          <Font>Times New Roman,10</Font>
+                          <Guid>d713a9d9da33477da3c90fe4f7727a2e</Guid>
+                          <Margins>0,0,0,0</Margins>
+                          <Name>txtEXP</Name>
+                          <Page isRef="3" />
+                          <Parent isRef="12" />
+                          <Text>{Product.EXP}</Text>
+                          <TextBrush>Black</TextBrush>
+                          <Type>DataColumn</Type>
+                        </txtEXP>
+                      </Components>
+                      <Conditions isList="true" count="0" />
+                      <Guid>1e75a9eae5654a7d8db467be197ddf2b</Guid>
+                      <Name>Panel3</Name>
+                      <Page isRef="3" />
+                      <Parent isRef="11" />
+                    </Panel3>
+                    <Text6 Ref="22" type="Text" isKey="true">
+                      <Brush>White</Brush>
+                      <ClientRectangle>0,1.2,0.7,0.2</ClientRectangle>
+                      <Conditions isList="true" count="0" />
+                      <Font>Times New Roman,10</Font>
+                      <Guid>600be560bb7d44319aff3282daf83a16</Guid>
+                      <HorAlignment>Center</HorAlignment>
+                      <Margins>0,0,0,0</Margins>
+                      <Name>Text6</Name>
+                      <Page isRef="3" />
+                      <Parent isRef="11" />
+                      <Text>Price</Text>
+                      <TextBrush>Black</TextBrush>
+                      <Type>Expression</Type>
+                    </Text6>
+                    <txtPrice Ref="23" type="Text" isKey="true">
+                      <Brush>White</Brush>
+                      <ClientRectangle>0.7,1.2,3.7,0.2</ClientRectangle>
+                      <Conditions isList="true" count="0" />
+                      <Font>Times New Roman,10</Font>
+                      <Guid>8aba6a888af54750adb4738dd32b8ea8</Guid>
+                      <Margins>0,0,0,0</Margins>
+                      <Name>txtPrice</Name>
+                      <Page isRef="3" />
+                      <Parent isRef="11" />
+                      <Text>{Product.Price}</Text>
+                      <TextBrush>Black</TextBrush>
+                      <Type>DataColumn</Type>
+                    </txtPrice>
+                    <Image1 Ref="24" type="Image" isKey="true">
+                      <Brush>White</Brush>
+                      <ClientRectangle>0.1,0,1.4,1</ClientRectangle>
+                      <Conditions isList="true" count="0" />
+                      <ImageURL>{Product.ImgQrCode}</ImageURL>
+                      <Name>Image1</Name>
+                      <Page isRef="3" />
+                      <Parent isRef="11" />
+                    </Image1>
+                  </Components>
+                  <Conditions isList="true" count="0" />
+                  <Guid>4f55f88a9ecd49c7b0180f02c62dc963</Guid>
+                  <Name>Panel2</Name>
+                  <Page isRef="3" />
+                  <Parent isRef="5" />
+                </Panel2>
+                <Text7 Ref="25" type="Text" isKey="true">
+                  <Brush>Yellow</Brush>
+                  <ClientRectangle>0,1.9,2.2,0.4</ClientRectangle>
+                  <Conditions isList="true" count="0" />
+                  <Font>Arial Black,10,Bold</Font>
+                  <Guid>eef095e43db147ea8ed0a0c6a0920018</Guid>
+                  <HorAlignment>Center</HorAlignment>
+                  <Margins>0,0,0,0</Margins>
+                  <Name>Text7</Name>
+                  <Page isRef="3" />
+                  <Parent isRef="5" />
+                  <Text>SMS 20008822</Text>
+                  <TextBrush>Black</TextBrush>
+                  <Type>Expression</Type>
+                </Text7>
+                <Text12 Ref="26" type="Text" isKey="true">
+                  <Brush>Yellow</Brush>
+                  <ClientRectangle>0,2.3,2.2,0.4</ClientRectangle>
+                  <Conditions isList="true" count="0" />
+                  <Font>Arial Black,10,Bold</Font>
+                  <Guid>6ef96edca37f49339637cd13306ac4aa</Guid>
+                  <HorAlignment>Center</HorAlignment>
+                  <Margins>0,0,0,0</Margins>
+                  <Name>Text12</Name>
+                  <Page isRef="3" />
+                  <Parent isRef="5" />
+                  <Text>www.TTAC.IR</Text>
+                  <TextBrush>Black</TextBrush>
+                  <Type>Expression</Type>
+                </Text12>
+                <Text14 Ref="27" type="Text" isKey="true">
+                  <Brush>Yellow</Brush>
+                  <ClientRectangle>0.1,2.7,1.1,0.4</ClientRectangle>
+                  <Conditions isList="true" count="0" />
+                  <Font>B Nazanin,10,Bold</Font>
+                  <Guid>b84a526d2c0846acb86f0f94848324eb</Guid>
+                  <HorAlignment>Center</HorAlignment>
+                  <Margins>0,0,0,0</Margins>
+                  <Name>Text14</Name>
+                  <Page isRef="3" />
+                  <Parent isRef="5" />
+                  <Text>021-6185</Text>
+                  <TextBrush>Black</TextBrush>
+                  <Type>Expression</Type>
+                </Text14>
+              </Components>
+              <Conditions isList="true" count="0" />
+              <Guid>6815a9062c564d388926302ab9f902ce</Guid>
+              <Name>Panel4</Name>
+              <Page isRef="3" />
+              <Parent isRef="4" />
+            </Panel4>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <DataSourceName isNull="true" />
+          <Filters isList="true" count="0" />
+          <Name>DataBand1</Name>
+          <Page isRef="3" />
+          <Parent isRef="3" />
+          <Sort isList="true" count="0" />
+        </DataBand1>
+      </Components>
+      <Conditions isList="true" count="0" />
+      <Guid>dd17a5761b55497dbb208f1205b56712</Guid>
+      <Margins>0.39,0.39,0.39,0.39</Margins>
+      <Name>Page1</Name>
+      <Orientation>Landscape</Orientation>
+      <PageHeight>9.4</PageHeight>
+      <PageWidth>5.5</PageWidth>
+      <PaperSize>Letter</PaperSize>
+      <Report isRef="0" />
+      <Watermark Ref="28" type="Stimulsoft.Report.Components.StiWatermark" isKey="true">
+        <Font>Arial,100</Font>
+        <TextBrush>[50:0:0:0]</TextBrush>
+      </Watermark>
+    </Page1>
+  </Pages>
+  <PrinterSettings Ref="29" type="Stimulsoft.Report.Print.StiPrinterSettings" isKey="true" />
+  <ReferencedAssemblies isList="true" count="8">
+    <value>System.Dll</value>
+    <value>System.Drawing.Dll</value>
+    <value>System.Windows.Forms.Dll</value>
+    <value>System.Data.Dll</value>
+    <value>System.Xml.Dll</value>
+    <value>Stimulsoft.Controls.Dll</value>
+    <value>Stimulsoft.Base.Dll</value>
+    <value>Stimulsoft.Report.Dll</value>
+  </ReferencedAssemblies>
+  <ReportAlias>Report</ReportAlias>
+  <ReportChanged>3/16/2018 8:56:05 PM</ReportChanged>
+  <ReportCreated>12/8/2017 9:28:40 PM</ReportCreated>
+  <ReportFile>D:\aso\Projects\GTINProject\DataMatrixPrinter\DataMatrixPrinter\DataMatrixPrinter\ReportPDF.mrt</ReportFile>
+  <ReportGuid>aed79a0c1b864963b75148e6f400b8d5</ReportGuid>
+  <ReportName>Report</ReportName>
+  <ReportUnit>Inches</ReportUnit>
+  <ReportVersion>2015.1.0</ReportVersion>
+  <Script>using System;
+using System.Drawing;
+using System.Windows.Forms;
+using System.Data;
+using Stimulsoft.Controls;
+using Stimulsoft.Base.Drawing;
+using Stimulsoft.Report;
+using Stimulsoft.Report.Dialogs;
+using Stimulsoft.Report.Components;
+
+namespace Reports
+{
+    public class Report : Stimulsoft.Report.StiReport
+    {
+        public Report()        {
+            this.InitializeComponent();
+        }
+
+        #region StiReport Designer generated code - do not modify
+		#endregion StiReport Designer generated code - do not modify
+    }
+}
+</Script>
+  <ScriptLanguage>CSharp</ScriptLanguage>
+  <Styles isList="true" count="0" />
+</StiSerializer>
